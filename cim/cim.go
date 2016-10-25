@@ -16,6 +16,7 @@ type Transaction struct {
 	CustomerProfileId string  `json:"customerProfileId"`
 	CardCode          string  `json:"cardCode,omitempty"`
 	PaymentProfileId  string  `json:"paymentProfileId"`
+	Order             *Order  `json:"order,omitempty"`
 }
 
 type Charge struct {

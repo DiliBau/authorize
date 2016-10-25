@@ -67,13 +67,15 @@ func (c *Client) CreateCustomerPaymentProfileTransaction(t *cim.Transaction) (st
 	req.TransactionRequest.Duty = t.Duty
 	req.TransactionRequest.Shipping = t.Shipping
 	req.TransactionRequest.Type = AUTH_CAPTURE_REQUEST
+	if t.Order != nil {
+		req.TransactionRequest.Order = t.Order
+	}
 	r := c.Do(req)
 	if r.ResponseStruct == nil {
 		return "", r.Err
 	}
 	resp := r.ResponseStruct.(*cim.CreateTransactionResponse)
-
-	return resp.TransactionId, r.Err
+	return resp.TransactionResponse.TransactionId, r.Err
 }
 
 func (c *Client) RefundTransaction(t *cim.Transaction, transactionId string) error {
@@ -83,6 +85,16 @@ func (c *Client) RefundTransaction(t *cim.Transaction, transactionId string) err
 	req.TransactionReqeust.Amount = t.Amount
 	req.TransactionReqeust.Profile.CustomerProfileId = t.CustomerProfileId
 	req.TransactionReqeust.Profile.PaymentProfile.PaymentProfileId = t.PaymentProfileId
+
+	r := c.Do(req)
+	return r.Err
+}
+
+func (c *Client) DeleteCustomerPaymentProfile(customerProfileId, customerPaymentProfileId string) error {
+	req := &cim.DeleteCustomerPaymentProfileRequest{
+		CustomerProfileId:        customerProfileId,
+		CustomerPaymentProfileId: customerPaymentProfileId,
+	}
 
 	r := c.Do(req)
 	return r.Err

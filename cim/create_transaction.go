@@ -22,9 +22,19 @@ type TransactionRequest struct {
 	Duty                       *Charge `json:"duty,omitempty"`
 	Shipping                   *Charge `json:"shipping,omitempty"`
 	RefundTransactionRequestId *string `json:"refTransId,omitempty"`
+	Order                      *Order  `json:"order,omitempty"`
+}
+
+type Order struct {
+	InvoiceNumber string `json:"invoiceNumber"`
+	Description   string `json:"description"`
 }
 
 type CreateTransactionResponse struct {
+	TransactionResponse TransactionResponse `json:"transactionResponse"`
+}
+
+type TransactionResponse struct {
 	AuthCode      string `json:"authCode"`
 	TransactionId string `json:"transId"`
 	TransHash     string `json:"transHash"`

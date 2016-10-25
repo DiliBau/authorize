@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/eliothedeman/authorize/cim"
+	"github.com/dilibau/authorize/cim"
 )
 
 const (

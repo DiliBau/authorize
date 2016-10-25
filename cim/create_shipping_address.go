@@ -1,6 +1,6 @@
 package cim
 
-import "github.com/eliothedeman/authorize/auth"
+import "github.com/dilibau/authorize/auth"
 
 type CreateShippingAddressRequest struct {
 	*auth.MerchantAuth `json:"merchantAuthentication,omitempty"`

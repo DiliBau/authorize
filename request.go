@@ -1,6 +1,6 @@
 package authorize
 
-import "github.com/eliothedeman/authorize/auth"
+import "github.com/dilibau/authorize/auth"
 
 // An api request for authorize.net
 type Request interface {

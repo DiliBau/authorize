@@ -39,9 +39,10 @@ type Address struct {
 }
 
 type PaymentProfile struct {
-	CustomerType string      `json:"customerType,omitempty"`
-	BillTo       Billing     `json:"billTo,omitempty"`
-	Payment      PaymentInfo `json:"payment"`
+	CustomerPaymentProfileID string      `json:"customerPaymentProfileId,omitempty"`
+	CustomerType             string      `json:"customerType,omitempty"`
+	BillTo                   Billing     `json:"billTo,omitempty"`
+	Payment                  PaymentInfo `json:"payment"`
 }
 
 type PaymentInfo struct {
@@ -55,6 +56,7 @@ type CreditCard struct {
 	ExpirationDate string `json:"expirationDate,omitempty"`
 	// CardCode       string `json:"-,omitempty"`
 	CardCode string `json:"cardCode,omitempty"`
+	CardType string `json:"cardType,omitempty"`
 }
 type BankAccount struct {
 	AccountType    string `json:"accountType,omitempty"`
